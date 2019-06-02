@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-2">About</h1>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">General</h3>
+        Jailibrary is a free to use iOS jailbreaking utility. We provide sources to packages, repositories, latest
+        jailbreak releases, and other iOS jailbreak related things. We <strong>do not</strong> record your data in any
+        way. Cookies, advertisements, and other methods used to manipulate your data are not practiced on our site. Take
+        a look at our <a href="https://github.com/jailibrary/jailibrary.github.io" class="text-muted">source code</a>!
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Settings</h3>
+
+        <h5>Site Theme</h5>
+        <button class="btn btn-primary mt-2 mb-3" id="dark-click">Dark</button>&nbsp;<button
+            class="btn btn-secondary mt-2 mb-3" id="light-click">Light</button>
+
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Latest Commits</h3>
+        The latest commits <span id="commit-count" class="d-none"></span> in our <a href="https://github.com/Jailibrary/jailibrary.github.io" class="text-muted">GitHub repository</a> can be found here.
+        <hr>
+        <div class="text-center" id="commits-loading-indicator">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <p class="text-muted text-center" id="commits-callback"></p>
+
+        <ul class="list-group" id="latest-commits">
+        </ul>
+    </div>
+</div>
+
+<div class="text-center text-muted mt-3">
+    Copyright &copy; 2019 Jailibrary
+</div>
+{% endblock content %}
+
+{% block ext %}
+<script src="{{ url_for('static', filename='scripts/get-commits.js') }}"></script>
+{% endblock ext %}

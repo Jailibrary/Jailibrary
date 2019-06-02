@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-2">Library</h1>
+    <p class="lead">Find tweaks, packages, repos, and more, all in one place.</p>
+    <p class="text-muted">Current package count: <span class="badge badge-secondary" id="pkg-count"><span
+                class="spinner-border spinner-border-sm"></span></span></p>
+</div>
+<h1>Jump to...<br>
+    <button class="btn btn-primary" id="go-tweaks"><i class="fas fa-tools"></i> Tweaks</button>
+    <button class="btn btn-info" id="go-system"><i class="fas fa-cogs"></i> System</button>
+    <button class="btn btn-secondary" id="go-development"><i class="fas fa-hammer"></i> Development</button>
+    <button class="btn btn-success" id="go-networking"><i class="fas fa-wifi"></i> Networking</button>
+    <button class="btn btn-dark" id="go-utilities"><i class="fas fa-tasks"></i> Utilities</button>
+    <button class="btn btn-danger" id="go-addons"><i class="fas fa-puzzle-piece"></i> Addons</button>
+</h1>
+<br>
+<div class="text-center" id="library-loading-indicator">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-6" style="margin-bottom: 20px;">
+        <button class="btn btn-primary" style="display: none;" id="un-col-tweaks"><i class="fas fa-plus-square"></i>
+            Uncollapse</button>
+        <ul class="list-group" id="tweaks-list">
+            <li class="list-group-item bg-primary"><i class="fas fa-tools"></i> Tweaks <i class="fas fa-minus-square"
+                    id="col-tweaks" style="cursor: pointer;"></i> <span class="badge badge-secondary float-right"
+                    id="tweaks-count">Loading...</span></li>
+            <li class="list-group-item bg-primary">
+                <div class='input-group'>
+                    <div class='input-group-prepend'><span class='input-group-text' id='basic-addon1'><i
+                                class='fas fa-search'></i></span></div><input type='search' class='form-control'
+                        placeholder='Tweak name' aria-label='Tweak name' id='searchTweaks'>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6" style="margin-bottom: 20px;">
+        <button class="btn btn-info" style="display: none;" id="un-col-system"><i class="fas fa-plus-square"></i>
+            Uncollapse</button>
+        <ul class="list-group" id="system-list">
+            <li class="list-group-item bg-info"><i class="fas fa-cogs"></i> System <i class="fas fa-minus-square"
+                    id="col-system" style="cursor: pointer;"></i> <span class="badge badge-secondary float-right"
+                    id="system-count">Loading...</span></li>
+            <li class="list-group-item bg-info">
+                <div class='input-group'>
+                    <div class='input-group-prepend'><span class='input-group-text' id='basic-addon1'><i
+                                class='fas fa-search'></i></span></div><input type='search' class='form-control'
+                        placeholder='System name' aria-label='System name' id='searchSystem'>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="col-md-6" style="margin-bottom: 20px;">
+        <button class="btn btn-secondary" style="display: none;" id="un-col-development"><i
+                class="fas fa-plus-square"></i> Uncollapse</button>
+        <ul class="list-group" id="development-list">
+            <li class="list-group-item bg-secondary"><i class="fas fa-hammer"></i> Development <i
+                    class="fas fa-minus-square" id="col-development" style="cursor: pointer;"></i> <span
+                    class="badge badge-secondary float-right" id="development-count">Loading...</span></li>
+            <li class="list-group-item bg-secondary">
+                <div class='input-group'>
+                    <div class='input-group-prepend'><span class='input-group-text' id='basic-addon1'><i
+                                class='fas fa-search'></i></span></div><input type='search' class='form-control'
+                        placeholder='Development name' aria-label='Development name' id='searchDevelopment'>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6" style="margin-bottom: 20px;">
+        <button class="btn btn-success" style="display: none;" id="un-col-networking"><i class="fas fa-plus-square"></i>
+            Uncollapse</button>
+        <ul class="list-group" id="networking-list">
+            <li class="list-group-item bg-success"><i class="fas fa-wifi"></i> Networking <i class="fas fa-minus-square"
+                    id="col-networking" style="cursor: pointer;"></i> <span class="badge badge-secondary float-right"
+                    id="networking-count">Loading...</span></li>
+            <li class="list-group-item bg-success">
+                <div class='input-group'>
+                    <div class='input-group-prepend'><span class='input-group-text' id='basic-addon1'><i
+                                class='fas fa-search'></i></span></div><input type='search' class='form-control'
+                        placeholder='Networking name' aria-label='Networking name' id='searchNetworking'>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6" style="margin-bottom: 20px;">
+        <button class="btn btn-dark" style="display: none;" id="un-col-utilities"><i class="fas fa-plus-square"></i>
+            Uncollapse</button>
+        <ul class="list-group" id="utilities-list">
+            <li class="list-group-item bg-dark"><i class="fas fa-tasks"></i> Utilities <i class="fas fa-minus-square"
+                    id="col-utilities" style="cursor: pointer;"></i> <span class="badge badge-secondary float-right"
+                    id="utilities-count">Loading...</span></li>
+            <li class="list-group-item bg-dark">
+                <div class='input-group'>
+                    <div class='input-group-prepend'><span class='input-group-text' id='basic-addon1'><i
+                                class='fas fa-search'></i></span></div><input type='search' class='form-control'
+                        placeholder='Utility name' aria-label='Utility name' id='searchUtilities'>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="col-md-6" style="margin-bottom: 20px;">
+        <button class="btn btn-danger" style="display: none;" id="un-col-addons"><i class="fas fa-plus-square"></i>
+            Uncollapse</button>
+        <ul class="list-group" id="addons-list">
+            <li class="list-group-item bg-danger"><i class="fas fa-puzzle-piece"></i> Addons <i
+                    class="fas fa-minus-square" id="col-addons" style="cursor: pointer;"></i> <span
+                    class="badge badge-secondary float-right" id="addons-count">Loading...</span></li>
+            <li class="list-group-item bg-danger">
+                <div class='input-group'>
+                    <div class='input-group-prepend'><span class='input-group-text' id='basic-addon1'><i
+                                class='fas fa-search'></i></span></div><input type='search' class='form-control'
+                        placeholder='Addon name' aria-label='Addon name' id='searchAddons'>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<button class="btn btn-lg btn-primary" id="back-to-top-btn"><i class="fas fa-arrow-circle-up"></i> Top</button>
+
+<!-- Package info modal -->
+
+<div class="modal fade" id="packageInfo" tabindex="-1" role="dialog" aria-labelledby="packageInfoLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="packageInfoLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #ffffff;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="description"></p>
+                <p id="repository"></p>
+                <p id="version"></p>
+                <p id="status"></p>
+                <p id="author"></p>
+                <p id="moreinfo"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block ext %}
+<script src="{{ url_for('static', filename='scripts/library/get-packages.js') }}"></script>
+{% endblock ext %}

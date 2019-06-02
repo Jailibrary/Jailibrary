@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-2">Jailibrary</h1>
+    <p class="lead">The best source for all iOS Jailbreak news and tools.</p>
+    <a class="btn btn-info btn-lg" id="get-started" href="{{ url_for('library') }}"><i class="fas fa-cube"></i> Go to
+        the Library</a>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-6">
+        <h1>Latest Releases</h1>
+        <br>
+
+        <div id="latest-releases">
+        </div>
+
+        <div class="text-center mb-3" id="unc0ver-loading-indicator">
+            <p><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading Unc0ver
+                info...</p>
+        </div>
+
+        <div class="text-center mb-3" id="chimera-loading-indicator">
+            <div class="text-center mb-3" id="chimera-loading-indicator">
+                <p><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading
+                    Chimera
+                    info...</p>
+            </div>
+        </div>
+
+        <p class="text-muted text-center" id="lr-callback"></p>
+    </div>
+
+    <div class="col-lg-6">
+        <h1>News <div class="dropdown float-right">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by
+                </button>
+                <div class="dropdown-menu" style="cursor: pointer;" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" style="cursor: pointer;" id="news-sortby-24hours"><i
+                            class="fab fa-hotjar"></i>
+                        Top - Last 24 hours</a>
+                    <a class="dropdown-item active" style="cursor: pointer;" id="news-sortby-week"><i
+                            class="fab fa-hotjar"></i> Top - Last week</a>
+                    <a class="dropdown-item" style="cursor: pointer;" id="news-sortby-month"><i
+                            class="fab fa-hotjar"></i> Top
+                        - Last month</a>
+                    <a class="dropdown-item" style="cursor: pointer;" id="news-sortby-year"><i
+                            class="fab fa-hotjar"></i> Top
+                        - Last year</a>
+                </div>
+            </div>
+        </h1>
+        <br>
+        <div class="text-center mb-3" id="news-loading-indicator">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <ul class="list-unstyled" id="news-list">
+        </ul>
+        <p id="news-error" class="text-muted text-center"></p>
+    </div>
+
+    <div class="col-lg-12">
+        <h1>Top Repos <span class="badge badge-secondary float-right" id="repo-count"></span></h1>
+        <br>
+        <div class="text-center d-none mb-3" id="repos-loading-indicator">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <ul id="repo-list" class="list-group">
+            <li class="list-group-item bg-secondary pt-4">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend"><span class="input-group-text bg-dark text-white"
+                            id="basic-addon1"><i class="fas fa-search"></i></span></div><input type="search"
+                        class="form-control" placeholder="Repo name" aria-label="Repo name" id="searchRepos">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="modal fade" id="postInfo" tabindex="-1" role="dialog" aria-labelledby="postInfoLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postInfoLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #ffffff;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="media">
+                        <img class="mr-3 tempimg img-thumbnail" id="img-src" height="140" width=140>
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1" id="title"></h5>
+                            <p id="author" class="text-muted">
+                                <p>
+                        </div>
+                    </div>
+                    <hr>
+                    <p><i class="fas fa-comments"></i> <span id="comment-count"></span> Comments</p>
+
+                    <div class="text-center" id="comments-loading-indicator">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div id="comments">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block ext %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.4.2/markdown-it.min.js"></script>
+<script src="{{ url_for('static', filename='scripts/jailbreaks.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/news.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/repos.js') }}"></script>
+{% endblock ext %}

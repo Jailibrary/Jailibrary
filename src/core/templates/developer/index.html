@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-4">Developer</h1>
+    <code
+        class="text-white"><span class="text-muted">jlbry:/var/mobile root#</span> <span id="typewriter-desc"></span></code>
+</div>
+
+<div class="list-group" id="developer-items-list" style="display: none;">
+    <a href="{{ url_for('developer_info') }}" class="list-group-item list-group-item-action border border-success">
+        <h5 class="mb-1">Detailed Jailbreak Information</h5>
+        <p class="mb-1">Interactive table of the latest jailbreak releases, iOS versions, iOS version features, devices,
+            device features, and more.</p>
+        <small class="text-dark">Raw JSON output coming soon.</small>
+    </a>
+</div>
+</p>
+
+{% endblock content %}
+
+{% block ext %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/6.0.3/typeit.min.js"></script>
+<script src="{{ url_for('static', filename='scripts/developer/main.js') }}"></script>
+{% endblock ext %}

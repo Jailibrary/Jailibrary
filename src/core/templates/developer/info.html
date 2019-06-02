@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h3><small class="text-muted">Developer / </small><br>Detailed Jailbreak Information</h3>
+<div class="card border border-warning" id="is-on-mobile-alert" style="display: none;">
+    <div class="card-body">
+        <p class="text-warning mb-0"><i class="fas fa-exclamation-circle"></i> Best viewed on Desktop</p>
+    </div>
+</div>
+<br>
+<ul class="nav nav-tabs" id="tabs" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="jailbreaks-tab" data-toggle="tab" href="#jailbreaks" role="tab"
+            aria-controls="jailbreaks" aria-selected="true">Jailbreaks</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="devices-tab" data-toggle="tab" href="#devices" role="tab" aria-controls="devices"
+            aria-selected="false">Devices</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="ios-versions-tab" data-toggle="tab" href="#ios-versions" role="tab"
+            aria-controls="ios-versions" aria-selected="false">iOS Versions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="ios-features-tab" data-toggle="tab" href="#ios-features" role="tab"
+            aria-controls="ios-features" aria-selected="false">iOS Features</a>
+    </li>
+</ul>
+<div class="text-center mt-5" id="info-loading-indicator">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div class="tab-content" id="tabsContent">
+    <div class="tab-pane fade show active" id="jailbreaks" role="tabpanel" aria-labelledby="jailbreaks-tab">
+        <table id="jailbreaks-table" class="table table-responsive table-striped">
+        </table>
+    </div>
+    <div class="tab-pane fade" id="devices" role="tabpanel" aria-labelledby="devices-tab">
+        <table id="devices-table" class="table table-responsive table-striped">
+
+        </table>
+    </div>
+    <div class="tab-pane fade" id="ios-versions" role="tabpanel" aria-labelledby="ios-versions-tab">
+        <table id="ios-versions-table" class="table table-responsive table-striped">
+
+        </table>
+    </div>
+    <div class="tab-pane fade" id="ios-features" role="tabpanel" aria-labelledby="ios-features-tab">
+        <table id="ios-features-table" class="table table-responsive table-striped tableBig">
+            <!-- aaaaaaaaaa -->
+            <thead>
+                <tr>
+                    <th>Device</th>
+                    <th>Released</th>
+                    <th>Initial</th>
+                    <th>Latest</th>
+                    <th>Supported</th>
+                    <th>Siri Suggestions</th>
+                    <th>ARKit 2</th>
+                    <th>Camera Effects</th>
+                    <th>Memoji</th>
+                    <th>Apple Pay Cash</th>
+                    <th>Person to Person</th>
+                    <th>Appointment Confirmation</th>
+                    <th>ARKit</th>
+                    <th>Hardware Decode H.265</th>
+                    <th>Encode in H.265</th>
+                    <th>Animoji</th>
+                    <th>Rich Notifications</th>
+                    <th>Ride-booking</th>
+                    <th>Raise to Wake</th>
+                    <th>Transit</th>
+                    <th>PIP</th>
+                    <th>Slide Over</th>
+                    <th>Split View</th>
+                    <th>Facedown</th>
+                    <th>Apple Pay</th>
+                    <th>Handoff</th>
+                    <th>Instant Hotspot</th>
+                    <th>Health</th>
+                    <th>Phone Calls</th>
+                    <th>SMS</th>
+                    <th>AirDrop</th>
+                    <th>Panorama</th>
+                    <th>Camera Filters</th>
+                    <th>Photos Filters</th>
+                    <th>Camera Swipe</th>
+                    <th>Flyover</th>
+                    <th>Siri</th>
+                    <th>Turn-by-Turn</th>
+                    <th>Cellular FaceTime</th>
+                    <th>Offline Reading List</th>
+                    <th>Panorama</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<p class="text-center text-muted">Data provided by the <a class="text-white"
+        href="https://telegram.me/joinchat/AAAAAD161xTKVMuu-bOaxg">Jailbreak Telegram</a> community.</p>
+
+{% endblock content %}
+
+{% block ext %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.1.4/dist/sheetrock.min.js"></script>
+<script src="{{ url_for('static', filename='scripts/developer/info.js') }}"></script>
+{% endblock ext %}

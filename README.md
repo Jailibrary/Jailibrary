@@ -7,7 +7,7 @@
 <p align="center">
   Jailbreak news, updates, compatibility checks, package lists, developer resources, and more.
   <br>
-  <a href="https://jailibrary.github.io"><strong>Go »</strong></a>
+  <a href="https://jailibrary.com"><strong>Go »</strong></a>
   <br>
   <br>
   <a href="https://github.com/Jailibrary/jailibrary.github.io/issues/new">Report bug</a>
